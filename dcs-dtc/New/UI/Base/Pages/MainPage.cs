@@ -65,6 +65,6 @@ public partial class MainPage : Page
 
     private void btnAV8B_Click(object sender, System.EventArgs e)
     {
-        NavigateTo("AV8BNA");
+        NavigateTo("AV8B");
     }
 }

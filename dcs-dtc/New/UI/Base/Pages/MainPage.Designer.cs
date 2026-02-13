@@ -177,8 +177,8 @@ partial class MainPage
         // 
         // btnAV8B
         // 
-        btnAV8B.BackgroundImage = Properties.Resources.FA18;
-        btnAV8B.BackgroundImageLayout = ImageLayout.Zoom;
+        btnAV8B.BackgroundImage = Properties.Resources.harrier3;
+        btnAV8B.BackgroundImageLayout = ImageLayout.Stretch;
         btnAV8B.FlatStyle = FlatStyle.Flat;
         btnAV8B.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold, GraphicsUnit.Point);
         btnAV8B.ForeColor = Color.Black;
@@ -208,7 +208,7 @@ partial class MainPage
         Controls.Add(btnAV8B);
         Controls.Add(btnWptDatabase);
         Name = "MainPage";
-        Size = new Size(812, 403);
+        Size = new Size(795, 403);
         ResumeLayout(false);
     }
 

@@ -5,7 +5,7 @@ namespace DTC.New.Presets.V2.Aircrafts.AV8B;
 
 public class AV8BConfiguration : Configuration
 {
-    public string Aircraft = "AV8BNA";
+    public string Aircraft = "AV8B";
 
     [System("Upload Settings")]
     public UploadSystem Upload { get; set; } = new();

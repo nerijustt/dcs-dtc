@@ -13,7 +13,7 @@ public class AV8BAircraft : Aircraft
 
     public override string GetAircraftModelName()
     {
-        return "AV8BNA";
+        return "AV8B";
     }
 
     public override Configuration NewConfiguration()
@@ -23,6 +23,6 @@ public class AV8BAircraft : Aircraft
 
     public override int GetMaxWaypointElevation()
     {
-        return 20000;
+        return 35000;
     }
 }

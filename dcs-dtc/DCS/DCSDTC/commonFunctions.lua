@@ -123,6 +123,7 @@ function DTC_GetPlayerAircraftType()
         if model == "C-130J-30" then return "C130" end
         if model == "A-10C_2" then return "A10" end
         if model == "CH-47Fbl1" then return "CH47F" end
+        if model == "AV8BNA" then return "AV8B" end
         return model;
     end
     return "Unknown"
@@ -193,8 +194,16 @@ end
 
 
 function DTC_Log2(str, log)
+    if type(str) ~= "string" then
+        str=type(str)
+    end
     local f = io.open(lfs.writedir() .. [[Logs\DTC_]] .. log .. ".log", "w")
     f:write(str .. "\n");
     f:flush();
     f:close();
+end
+
+function DTC_trim(s)
+    if type(s) ~= "string" then return "" end
+    return (s:gsub("^%s+", ""):gsub("%s+$", ""))
 end

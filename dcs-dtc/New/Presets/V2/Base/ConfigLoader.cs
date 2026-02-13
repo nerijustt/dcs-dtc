@@ -90,6 +90,14 @@ internal class ConfigLoader
             return typeof(Aircrafts.CH47F.CH47FConfiguration);
         }
 
+        if (aircraft == "AV8B")
+        {
+            return typeof(Aircrafts.AV8B.AV8BConfiguration);
+        }
+
+        
+
+
         throw new NotImplementedException();
     }
 }
