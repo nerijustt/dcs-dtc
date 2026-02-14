@@ -1,5 +1,6 @@
 ﻿using DTC.New.Presets.V2.Aircrafts.AV8B;
 using DTC.New.Presets.V2.Aircrafts.AV8B.Systems;
+using DTC.New.Presets.V2.Base.Systems;
 using DTC.Utilities;
 using DTC.Utilities.Network;
 using System.Collections.Generic;
@@ -33,7 +34,26 @@ internal class AV8BCapture
                 Target = d.target
             };
 
-            wpt.Sequence = cfg.Waypoints.GetNextSequence();
+            WaypointSystem wptSystem = cfg.Waypoints;
+
+            if (cfg.WaypointsCapture.NavPointsMode == SteerpointCaptureMode.AddToEndOfList)
+            {
+                wpt.Sequence = wptSystem.GetNextSequence();
+            }
+            else if (cfg.WaypointsCapture.NavPointsMode == SteerpointCaptureMode.AddToEndOfFirstGap)
+            {
+                wpt.Sequence = wptSystem.GetNextSequenceOfFirstGap();
+            }
+            else if (cfg.WaypointsCapture.NavPointsMode == SteerpointCaptureMode.AddToRange)
+            {
+                wpt.Sequence = wptSystem.GetNextSequenceFromSequence(cfg.WaypointsCapture.NavPointsRangeFrom);
+            }
+            wpt.Name = "STPT " + wpt.Sequence;
+            wptSystem.Add(wpt);
+
+
+
+           /* wpt.Sequence = cfg.Waypoints.GetNextSequence();
             if (wpt.Sequence == 0)
             {
                 wpt.Sequence = cfg.Waypoints.GetFirstAllowedSequence();
@@ -41,6 +61,7 @@ internal class AV8BCapture
 
             wpt.Name = wpt.Target ? $"TGT {wpt.Sequence}" : $"STPT {wpt.Sequence}";
             cfg.Waypoints.Add(wpt);
+           */
         }
 
         cfg.Waypoints.ReorderBySequence();

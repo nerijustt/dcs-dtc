@@ -28,11 +28,24 @@ public class AV8BPage : AircraftPage
 
     protected override AircraftSystemPage[] GetPages(IConfiguration configuration)
     {
+
+        var cfg = Configuration;
+
+        if (cfg.Upload == null) cfg.Upload = new();
+        if (cfg.WaypointsCapture == null) cfg.WaypointsCapture = new();
+        if (cfg.Waypoints == null) cfg.Waypoints = new();
+        
+
         return new AircraftSystemPage[]
         {
-            new LoadSavePage(this),
+
+
+       
+
+        new LoadSavePage(this),
             new AircraftSystemPage.Divider(),
             new UploadPage(this),
+            new WaypointCapturePage(this, cfg.WaypointsCapture),
             new AircraftSystemPage.Divider(),
             new WaypointsPage<Waypoint>(this, Configuration.Waypoints, null, nameof(Configuration.Waypoints), "Waypoints")
         };
