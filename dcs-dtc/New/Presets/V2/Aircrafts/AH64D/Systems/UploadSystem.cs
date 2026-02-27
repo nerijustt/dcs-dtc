@@ -11,4 +11,6 @@ public class UploadSystem
     public bool DeleteControlMeasures { get; set; }
     public bool DeleteTargets { get; set; }
     public bool Kneeboard { get; set; }
+    public bool LaserCodes { get; set; }
 }
+

@@ -65,7 +65,8 @@ public class AH64DPage : AircraftPage
                 "Targets"),
 
             new RoutePage(this),
-            new TSDPage(this)
+            new TSDPage(this),
+            new LaserCodesPage(this)
         };
     }
 

@@ -72,6 +72,13 @@ public partial class UploadPage : AircraftSystemPage
             upload.Kneeboard = chkKneeboard.Checked;
             this.SavePreset();
         };
+
+        chkLaserCodes.Checked = upload.LaserCodes;
+        chkLaserCodes.CheckedChanged += (s, e) =>
+        {
+            upload.LaserCodes = chkLaserCodes.Checked;
+            this.SavePreset();
+        };
     }
 
     public override string GetPageTitle()

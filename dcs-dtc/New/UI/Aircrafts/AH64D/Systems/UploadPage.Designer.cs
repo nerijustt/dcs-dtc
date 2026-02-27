@@ -42,6 +42,7 @@ namespace DTC.New.UI.Aircrafts.AH64D.Systems
             chkClearControlMeasures = new CheckBox();
             chkClearTargets = new CheckBox();
             chkKneeboard = new CheckBox();
+            chkLaserCodes = new CheckBox();
             SuspendLayout();
             // 
             // chkWaypoints
@@ -169,11 +170,25 @@ namespace DTC.New.UI.Aircrafts.AH64D.Systems
             chkKneeboard.Text = "Kneeboard";
             chkKneeboard.UseVisualStyleBackColor = true;
             // 
+            // chkLaserCodes
+            // 
+            chkLaserCodes.Checked = true;
+            chkLaserCodes.CheckState = CheckState.Checked;
+            chkLaserCodes.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            chkLaserCodes.Location = new Point(15, 213);
+            chkLaserCodes.Margin = new Padding(4);
+            chkLaserCodes.Name = "chkLaserCodes";
+            chkLaserCodes.Size = new Size(154, 25);
+            chkLaserCodes.TabIndex = 9;
+            chkLaserCodes.Text = "Laser Codes";
+            chkLaserCodes.UseVisualStyleBackColor = true;
+            // 
             // UploadPage
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.PaleGoldenrod;
+            Controls.Add(chkLaserCodes);
             Controls.Add(chkKneeboard);
             Controls.Add(chkTSD);
             Controls.Add(chkRoutes);
@@ -201,5 +216,6 @@ namespace DTC.New.UI.Aircrafts.AH64D.Systems
         private CheckBox chkClearControlMeasures;
         private CheckBox chkClearTargets;
         private CheckBox chkKneeboard;
+        private CheckBox chkLaserCodes;
     }
 }
