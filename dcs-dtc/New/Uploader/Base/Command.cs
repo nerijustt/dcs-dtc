@@ -34,6 +34,7 @@ public abstract class Command : ICommand
         {
             postDelay = (baseDelay * PostDelayFactor).ToString(CultureInfo.InvariantCulture);
         }
+        postDelay = "300";
         return $"DTC_ExecCommand({Device.Id}, {Id}, {delay}, {Activation.ToString(CultureInfo.InvariantCulture)}, {postDelay})";
     }
 }

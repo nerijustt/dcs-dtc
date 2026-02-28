@@ -7,7 +7,7 @@ namespace DTC.New.Uploader.Aircrafts.AH64D;
 public partial class AH64DUploader
 {
 
-    private string map(char letter)
+    private string mapLaserLetterToBtn(char letter)
     {
         if (letter == 'A') return "L1";
         if (letter == 'B') return "L2";
@@ -53,7 +53,7 @@ public partial class AH64DUploader
                 continue;
             }
 
-            var key = map (letter);
+            var key = mapLaserLetterToBtn(letter);
             if (key=="")
             {
                 continue;

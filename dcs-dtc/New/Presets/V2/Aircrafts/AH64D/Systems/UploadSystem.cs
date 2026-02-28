@@ -12,5 +12,6 @@ public class UploadSystem
     public bool DeleteTargets { get; set; }
     public bool Kneeboard { get; set; }
     public bool LaserCodes { get; set; }
+    public bool Radios { get; set; }
 }
 

@@ -32,6 +32,9 @@ public class AH64DConfiguration : Configuration
     [System("Laser Codes")]
     public LaserCodesSystem LaserCodes { get; set; } = new();
 
+    [System("Radios")]
+    public RadioSystem Radios { get; set; } = new();
+
     public override void AfterLoadFromJson()
     {
     }
