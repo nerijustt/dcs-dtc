@@ -2,6 +2,7 @@
 using DTC.New.Presets.V2.Base.Systems;
 using DTC.New.Uploader.Base;
 using DTC.Utilities;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Windows.Forms;
@@ -64,14 +65,14 @@ public partial class AH64DUploader
         {
             foreach (var preset in radio1.Presets)
             {
-                radios[preset.Number, 0] = preset;
+                if (preset.Number<=10) radios[preset.Number, 0] = preset;
             }
         }
         if (radio2 != null && radio2.Presets.Count > 0)
         {
             foreach (var preset in radio2.Presets)
             {
-                radios[preset.Number, 1] = preset;
+                if (preset.Number <= 10) radios[preset.Number, 1] = preset;
             }
         }
 
@@ -91,6 +92,7 @@ public partial class AH64DUploader
 
             Cmd(display.GetCommand(btn));
             Cmd(display.GetCommand("B6"));
+            var hasName = false;
             for (var j = 0; j <= 1; j++)
             {
                 var preset = radios[i, j];
@@ -101,13 +103,35 @@ public partial class AH64DUploader
                 }
 
 
-                if (preset.Name != null & preset.Name != "")
+                if (preset.Name != null & preset.Name != "" && hasName == false)
                 {
+                    var name = preset.Name.ToUpper().Trim();
+                    var name1 = name;
+                    var name2 = string.Empty;
+
+                    if (name.Length >= 4 && name[3] == ' ')
+                    {
+                        name2 = name.Substring(0, 3);     // pirmi 3 simboliai
+                        name1 = name.Substring(4);        // nuo 5 simbolio iki galo
+                    }
+
                     Cmd(display.GetCommand("T2"));
-                    Cmd(display.GetCommand("L1"));
-                    Cmd(keyboard.GetCommand("CLR"));
-                    Cmd(Keyboard(keyboard, $"{preset.Name.ToUpper()}"));
-                    Cmd(keyboard.GetCommand("ENTER"));
+                    if (name1 != "")
+                    {
+                        Cmd(display.GetCommand("L1"));
+                        Cmd(keyboard.GetCommand("CLR"));
+                        Cmd(Keyboard(keyboard, $"{name1}"));
+                        Cmd(keyboard.GetCommand("ENTER"));
+                    }
+
+                    if (name2 != "")
+                    {
+                        Cmd(display.GetCommand("L2"));
+                        Cmd(keyboard.GetCommand("CLR"));
+                        Cmd(Keyboard(keyboard, $"{name2}"));
+                        Cmd(keyboard.GetCommand("ENTER"));
+                    }
+                    hasName = true;
                 }
 
                 freqType = RadioPreset.GetFreqType(preset.Frequency);
@@ -193,23 +217,6 @@ public partial class AH64DUploader
             Cmd(Keyboard(keyboard, $"{radio2.SelectedFrequency}"));
             Cmd(keyboard.GetCommand("ENTER"));
         }
-
-        /*  var pre1 = (radio1.Mode == RadioMode.Preset && radio1.SelectedPreset != null);
-          var pre2 = (radio1.Mode == RadioMode.Preset && radio1.SelectedPreset != null);
-
-          if (pre1 || pre2)
-          {
-              Cmd(display.GetCommand("COM"));
-              var btn = mapPresetNoToBtn(int.Parse(radio1.SelectedPreset));
-              Cmd(display.GetCommand(btn));
-              if (RadioPreset.GetFreqType(radio1.SelectedFrequency) == "UHF")
-              {
-
-              }
-
-          }
-        */
-
 
     }
 }
