@@ -7,7 +7,7 @@ namespace DTC.New.UI.Aircrafts.AH64D.Systems;
 public class LaserCodesPage : AircraftSystemPage
 {
     private readonly LaserCodesSystem _laserCodes;
-
+  
     public LaserCodesPage(AH64DPage parent) : base(parent, nameof(parent.Configuration.LaserCodes))
     {
         _laserCodes = parent.Configuration.LaserCodes;

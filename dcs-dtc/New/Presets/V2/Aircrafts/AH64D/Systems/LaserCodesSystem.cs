@@ -2,6 +2,9 @@
 
 public class LaserCodesSystem
 {
+    public const int MinCode = 1111;
+    public const int MaxCode = 1788;
+
     public string A { get; set; } = "";
     public string B { get; set; } = "";
     public string C { get; set; } = "";
@@ -25,6 +28,11 @@ public class LaserCodesSystem
     public string SetCode(char letter, string code)
     {
         if (string.IsNullOrEmpty(code) || code.Length != 4 || !code.All(char.IsDigit))
+        {
+            return "";
+        }
+
+        if (!int.TryParse(code, out var parsedCode) || parsedCode < MinCode || parsedCode > MaxCode)
         {
             return "";
         }
