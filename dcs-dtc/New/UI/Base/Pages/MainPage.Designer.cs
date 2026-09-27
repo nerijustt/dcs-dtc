@@ -246,7 +246,7 @@ partial class MainPage
         Controls.Add(btnOH58D);
         Controls.Add(btnWptDatabase);
         Name = "MainPage";
-        Size = new Size(795, 403);
+        Size = new Size(778, 403);
         ResumeLayout(false);
     }
 
